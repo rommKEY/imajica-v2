@@ -73,20 +73,6 @@
                                                         <td class="text-center">{{ $supplier->supplier_type }}</td>
                                                         <td class="text-center">
                                                             <div class="d-inline-block">
-                                                                <button class="btn btn-sm btn-success view-supplier" 
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#supplierModal"
-                                                                    data-supplier-id="{{ $supplier->suppler_id }}"
-                                                                    data-supplier-name="{{ $supplier->supplier_name }}"
-                                                                    data-supplier-contact="{{ $supplier->contactNumber }}"
-                                                                    data-supplier-email="{{ $supplier->email }}"
-                                                                    data-supplier-type="{{ $supplier->supplier_type }}"
-                                                                    data-supplier-address="{{ $supplier->address }}"
-                                                                    data-supplier-products="{{ $supplier->product_offered }}"
-                                                                    >
-                                                                    
-                                                                    <i class="ti tabler-eye me-1"></i> View
-                                                                </button>
                                                                 <button type="button" class="btn btn-sm btn-info edit-supplier" 
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#editSupplierModal"
@@ -118,92 +104,6 @@
                         </div>
                     </div>
                     <!-- / Content -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- View Supplier Modal -->
-    <div class="modal fade" id="supplierModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content border-0">
-                <div class="modal-header  text-white border-0" style="background-color: #0a3622">
-                    <h5 class="modal-title text-white fs-4">
-                        <i class="ti tabler-info-circle me-2"></i>
-                        <span id="modalSupplierName"></span>
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="row g-3">
-                        <!-- Supplier Details -->
-                        <div class="col-md-6">
-                            <div class="client-detail-card h-100">
-                                <h6 class="text-primary mb-3">Supplier Information</h6>
-                                <div class="client-info-item">
-                                    <div class="client-info-icon">
-                                        <i class="ti tabler-id"></i>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted d-block">Supplier ID</small>
-                                        <span id="modalSupplierId" class="fw-semibold"></span>
-                                    </div>
-                                </div>
-                                <div class="client-info-item">
-                                    <div class="client-info-icon">
-                                        <i class="ti tabler-building"></i>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted d-block"> Supplier Type</small>
-                                        <span id="modalSupplierType" class="fw-semibold"></span>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="client-detail-card">
-                                        <h6 class="text-primary mb-3">Address</h6>
-                                        <p id="modalAddress" class="mb-0"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Contact Details -->
-                        <div class="col-md-6">
-                            <div class="client-detail-card h-100">
-                                <h6 class="text-primary mb-3">Contact Information</h6>
-                                <div class="client-info-item">
-                                    <div class="client-info-icon">
-                                        <i class="ti tabler-phone"></i>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted d-block">Contact Number</small>
-                                        <span id="modalContactNumber" class="fw-semibold"></span>
-                                    </div>
-                                </div>
-                                <div class="client-info-item">
-                                    <div class="client-info-icon">
-                                        <i class="ti tabler-mail"></i>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted d-block">Email</small>
-                                        <span id="modalEmail" class="fw-semibold"></span>
-                                    </div>
-                                </div>
-                                <div class="client-info-item">
-                                    <div class="client-info-icon">
-                                        <i class="ti tabler-package"></i>
-                                    </div>
-                                    <div>
-                                        <small class="text-muted d-block">Products/Services Offered</small>
-                                        <span id="modalProducts" class="fw-semibold"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Address -->
-                    
-                    </div>
                 </div>
             </div>
         </div>
@@ -452,68 +352,6 @@
         });
 
       });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll(".view-supplier").forEach((button) => {
-                button.addEventListener("click", function() {
-                    // Debug: Log all data attributes
-                    console.log('View Supplier Clicked - Data Attributes:', {
-                        name: this.dataset.supplierName,
-                        id: this.dataset.supplierId,
-                        type: this.dataset.supplierType,
-                        contact: this.dataset.supplierContact,
-                        email: this.dataset.supplierEmail,
-                        address: this.dataset.supplierAddress,
-                        products: this.dataset.supplierProducts
-                    });
-
-                    // Update modal content with data attributes
-                    const modalSupplierName = document.getElementById("modalSupplierName");
-                    const modalSupplierId = document.getElementById("modalSupplierId");
-                    const modalSupplierType = document.getElementById("modalSupplierType");
-                    const modalContactNumber = document.getElementById("modalContactNumber");
-                    const modalEmail = document.getElementById("modalEmail");
-                    const modalAddress = document.getElementById("modalAddress");
-                    const modalProducts = document.getElementById("modalProducts");
-                  
-                    // Debug: Log DOM elements
-                    console.log('Modal Elements:', {
-                        modalSupplierName,
-                        modalSupplierId,
-                        modalSupplierType,
-                        modalContactNumber,
-                        modalEmail,
-                        modalAddress,
-                        modalProducts
-                    });
-
-                    // Update content and log assignments
-                    modalSupplierName.textContent = this.dataset.supplierName;
-                    modalSupplierId.textContent = this.dataset.supplierId;
-                    modalSupplierType.textContent = this.dataset.supplierType;
-                    modalContactNumber.textContent = this.dataset.supplierContact;
-                    modalEmail.textContent = this.dataset.supplierEmail;
-                    modalAddress.textContent = this.dataset.supplierAddress;
-                    modalProducts.textContent = this.dataset.supplierProducts || 'No products/services listed';
-
-                    // Debug: Log final content
-                    console.log('Updated Modal Content:', {
-                        name: modalSupplierName.textContent,
-                        id: modalSupplierId.textContent,
-                        type: modalSupplierType.textContent,
-                        contact: modalContactNumber.textContent,
-                        email: modalEmail.textContent,
-                        address: modalAddress.textContent,
-                        products: modalProducts.textContent
-                    });
-
-                    // Show modal
-                    $('#supplierModal').modal('show');
-                });
-            });
-        });
     </script>
 
 </body>
